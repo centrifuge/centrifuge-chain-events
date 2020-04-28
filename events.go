@@ -138,6 +138,94 @@ type EventRelayerThresholdChanged struct {
 	Topics    []types.Hash
 }
 
+// EventRelayerRemoved is emitted by the chain bridge when a relayer is removed
+type EventRelayerRemoved struct {
+	Phase   types.Phase
+	Relayer types.AccountID
+	Topics  []types.Hash
+}
+
+// EventVoteFor
+type EventVoteFor struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Voter        types.AccountID
+	Topics       []types.Hash
+}
+
+// EventVoteAgainst
+type EventVoteAgainst struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Voter        types.AccountID
+	Topics       []types.Hash
+}
+
+// EventProposalApproved
+type EventProposalApproved struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Topics       []types.Hash
+}
+
+// EventProposalRejected
+type EventProposalRejected struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Topics       []types.Hash
+}
+
+// EventProposalSucceeded
+type EventProposalSucceeded struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Topics       []types.Hash
+}
+
+// EventProposalFailed
+type EventProposalFailed struct {
+	Phase        types.Phase
+	SourceId     types.U8
+	DepositNonce types.U64
+	Topics       []types.Hash
+}
+
+// EventErc721Minted
+type EventErc721Minted struct {
+	Phase   types.Phase
+	Owner   types.AccountID
+	TokenId types.U256
+	Topics  []types.Hash
+}
+
+// EventErc721Transferred
+type EventErc721Transferred struct {
+	Phase   types.Phase
+	From    types.AccountID
+	To      types.AccountID
+	TokenId types.U256
+	Topics  []types.Hash
+}
+
+// EventErc721Burned
+type EventErc721Burned struct {
+	Phase   types.Phase
+	TokenId types.AccountID
+	Topics  []types.Hash
+}
+
+// EventExampleRemark
+type EventExampleRemark struct {
+	Phase  types.Phase
+	Hash   types.Hash
+	Topics []types.Hash
+}
+
 // Events holds the default events and custom events for centrifuge chain
 type Events struct {
 	types.EventRecords
@@ -146,7 +234,18 @@ type Events struct {
 	ChainBridge_GenericTransfer         []EventGenericTransfer                //nolint:stylecheck,golint
 	ChainBridge_ChainWhitelisted        []EventChainWhitelisted               //nolint:stylecheck,golint
 	ChainBridge_RelayerAdded            []EventRelayerAdded                   //nolint:stylecheck,golint
+	ChainBridge_RelayerRemoved          []EventRelayerRemoved                 //nolint:stylecheck,golint
 	ChainBridge_RelayerThresholdChanged []EventRelayerThresholdChanged        //nolint:stylecheck,golint
+	ChainBridge_VoteFor                 []EventVoteFor                        //nolint:stylecheck,golint
+	ChainBridge_VoteAgainst             []EventVoteAgainst                    //nolint:stylecheck,golint
+	ChainBridge_ProposalApproved        []EventProposalApproved               //nolint:stylecheck,golint
+	ChainBridge_ProposalRejected        []EventProposalRejected               //nolint:stylecheck,golint
+	ChainBridge_ProposalSucceeded       []EventProposalSucceeded              //nolint:stylecheck,golint
+	ChainBridge_ProposalFailed          []EventProposalFailed                 //nolint:stylecheck,golint
+	Erc721_Minted                       []EventErc721Minted                   //nolint:stylecheck,golint
+	Erc721_Transferred                  []EventErc721Transferred              //nolint:stylecheck,golint
+	Erc721_Burned                       []EventErc721Burned                   //nolint:stylecheck,golint
+	Example_Remark                      []EventExampleRemark                  //nolint:stylecheck,golint
 	Nfts_DepositAsset                   []EventNFTDeposited                   //nolint:stylecheck,golint
 	Council_Proposed                    []types.EventCollectiveProposed       //nolint:stylecheck,golint
 	Council_Voted                       []types.EventCollectiveProposed       //nolint:stylecheck,golint
